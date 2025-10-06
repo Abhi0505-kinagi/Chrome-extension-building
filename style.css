@@ -1,120 +1,143 @@
-body { 
-    font-family: Arial, sans-serif; 
-    width: 400px; 
-    padding: 10px;
-    background:rgb(68, 3, 102); 
-    background-repeat: no-repeat;
-}
-#header{
-   color: white; 
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   font-size: 40px;
-}
-input, textarea
-{ width: 100%;
-    margin: 5px 0;
-    padding: 6px; 
-}
-#title{
-    border: 2px solid black;
-    width: 100%;
-    height: 20px;
-    border-radius: 5px;
-    
-}
-    
-button {
-    width: 30%;
-    padding: 5px;
-    margin-top: 8px;
-    background-color:#ce3fd3;
-    border: 2px solid black;
-    color: whitesmoke;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease-in-out;
- }
- #link{
-    color: blue;
-    border-radius: 5px;
-    border: 2px solid black;
-    width: 100%;
-    height: 20px;
- }
- #desc{
-    border: 2px solid black;
- }
-
-.link {
-     font-weight: bold; 
-     color: blue; 
-     text-decoration: underline; 
-     cursor: pointer;
-    }
-/* Container for each note */
-.note {
-  background: #ffffff;           /* white card */
-  border-radius: 8px;            /* rounded corners */
-  padding: 10px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* soft shadow */
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-/* Link */
-.note .link {
-  color: #0078d7;                /* Microsoft blue */
-  font-weight: bold;
-  text-decoration: none;         /* remove underline */
-  word-break: break-all;         /* wrap long URLs */
-}
-
-.note .link:hover {
-  text-decoration: underline;
-  color: #005a9e;                /* darker blue on hover */
-}
-#savednotes{
-    color: white;
-    background-color: rgb(86, 11, 121,0.5);
-
-}
-#notes-section{
-    border: 2px solid white;
-    margin-top: 5px;
-    width: 400px;
-    
-}
-#savednotes{
-    margin: 5px;
-}
-/* Description paragraph */
-.note p {
+/* --- General Reset --- */
+* {
   margin: 0;
-  color: #333;                   /* dark gray text */
-  font-size: 14px;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Google Sans", "Poppins", "Segoe UI", sans-serif;
 }
 
-/* Delete button */
-.note .deleteBtn {
-  align-self: flex-end;          /* right-align */
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #e81123;     /* Microsoft red */
+/* --- Body Styling --- */
+body {
+  width: 360px;
+  min-height: 520px;
+  background: linear-gradient(160deg, #e0f7fa, #ffffff, #e8eaf6);
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.12);
+  padding: 18px;
+  color: #333;
+  overflow-y: auto;
+}
+
+/* --- Header --- */
+#header {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 18px;
+}
+
+/* --- Inputs --- */
+input[type="text"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #1976d2;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(25, 118, 210, 0.3);
+}
+
+textarea {
+  resize: vertical;
+  height: 70px;
+}
+
+/* --- Button --- */
+#saveBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #1976d2;
   color: white;
-  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+#saveBtn:hover {
+  background-color: #1565c0;
+  box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
+}
+
+/* --- Notes Section --- */
+#notes-section {
+  margin-top: 18px;
+  background: #f5f7fa;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+#savednotes {
+  color: #0d47a1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* --- Individual Notes --- */
+.note {
+  background: white;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease-in-out;
-
 }
 
-.note .deleteBtn:hover {
-  background-color: #c50f1f;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+.note:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.2);
 }
+
+.note h4 {
+  color: #1976d2;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.note a {
+  color: #1565c0;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.note a:hover {
+  text-decoration: underline;
+}
+
+.note p {
+  color: #555;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* --- Scrollbar (Chrome-style) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #90caf9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64b5f6;
+}
+
